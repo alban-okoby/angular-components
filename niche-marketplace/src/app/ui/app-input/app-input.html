@@ -1,0 +1,22 @@
+<div class="input-container" [class.has-error]="error">
+    @if (label) {
+    <label [for]="id" class="input-label">{{ label }}</label>
+    }
+    <div class="input-wrapper">
+        @if (prefixIcon) {
+        <span class="prefix-icon">{{ prefixIcon }}</span>
+        }
+        <input [id]="id" [type]="type" [placeholder]="placeholder" [value]="value" [disabled]="disabled"
+            (input)="onInput($event)" (blur)="onBlur()" [class.has-prefix]="!!prefixIcon"
+            [class.has-suffix]="!!suffixIcon" />
+        @if (suffixIcon) {
+        <span class="suffix-icon">{{ suffixIcon }}</span>
+        }
+    </div>
+    @if (error) {
+    <div class="error-message">{{ error }}</div>
+    }
+    @if (hint && !error) {
+    <div class="hint">{{ hint }}</div>
+    }
+</div>
