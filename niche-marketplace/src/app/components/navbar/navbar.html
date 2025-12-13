@@ -5,7 +5,7 @@
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <rect width="32" height="32" rx="8" fill="var(--primary)" />
                 <text x="16" y="22" text-anchor="middle" fill="white" font-family="Arial" font-size="14"
-                    font-weight="bold">N</text>
+                    font-weight="bold">NM</text>
             </svg>
             <span>NicheMarket</span>
         </a>
@@ -158,10 +158,11 @@
             </button>
             } @else {
             <div class="mobile-auth">
-                <a routerLink="/connexion" (click)="toggleMobileMenu()" class="auth-link">
+                <app-button routerLink="/connexion" class="auth-link" (click)="toggleMobileMenu()" variant="primary" size="sm"
+                    fullWidth>
                     Connexion
-                </a>
-                <app-button routerLink="/inscription" (click)="toggleMobileMenu()" variant="primary" size="sm"
+                </app-button>
+                <app-button routerLink="/inscription" class="auth-link" (click)="toggleMobileMenu()" variant="primary" size="sm"
                     fullWidth>
                     Inscription
                 </app-button>

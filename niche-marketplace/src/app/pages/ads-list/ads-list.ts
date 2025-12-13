@@ -48,16 +48,16 @@ export class AdsList implements OnInit, OnDestroy {
   ];
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<any>,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.ads$ = store.select((state:any) => state.ads.ads);
-    this.loading$ = store.select((state:any) => state.ads.loading);
-    this.error$ = store.select((state:any) => state.ads.error);
-    this.filters$ = store.select((state:any) => state.ads.filters);
-    
+    this.ads$ = this.store.select((state:any) => state.ads);
+    this.loading$ = this.store.select((state:any) => state.loading);
+    this.error$ = this.store.select((state:any) => state.error);
+    this.filters$ = this.store.select((state:any) => state.filters);
+
     this.filterForm = this.fb.group({
       searchQuery: [''],
       category: [''],

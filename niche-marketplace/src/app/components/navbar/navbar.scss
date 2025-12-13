@@ -311,9 +311,13 @@
         }
 
         .mobile-auth {
+            // display: flex;
+            // flex-direction: column;
+            margin-top: 1rem;
             .auth-link {
                 display: block;
-                text-align: center;
+                // text-align: center;
+                margin-left: 1rem;
                 margin-bottom: var(--spacing-md);
             }
         }
