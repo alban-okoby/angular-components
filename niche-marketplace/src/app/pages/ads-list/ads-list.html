@@ -1,0 +1,115 @@
+<div class="ads-list-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Annonces</h1>
+            <app-button routerLink="/annonces/nouveau" variant="primary">
+                + Nouvelle annonce
+            </app-button>
+        </div>
+
+        <div class="content">
+            <!-- Filtres -->
+            <aside class="filters-sidebar">
+                <div class="filters-card">
+                    <h3>Filtres</h3>
+
+                    <form [formGroup]="filterForm" class="filter-form">
+                        <app-input label="Rechercher" placeholder="Mots-clés..." formControlName="searchQuery" />
+
+                        <!-- <app-select label="Catégorie" formControlName="category" [options]="categoryOptions" /> -->
+
+                        <!-- <app-select label="Localisation" formControlName="location" [options]="locationOptions" /> -->
+
+                        <div class="price-range">
+                            <label>Prix</label>
+                            <div class="price-inputs">
+                                <input type="number" placeholder="Min" formControlName="minPrice" />
+                                <span>-</span>
+                                <input type="number" placeholder="Max" formControlName="maxPrice" />
+                            </div>
+                        </div>
+
+                        <!-- <app-select label="État" formControlName="condition" [options]="conditionOptions" multiple /> -->
+
+                        <div class="filter-actions">
+                            <app-button type="button" variant="secondary" size="sm" (click)="resetFilters()">
+                                Réinitialiser
+                            </app-button>
+                            <app-button type="submit" variant="primary" size="sm">
+                                Appliquer
+                            </app-button>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- Liste des annonces -->
+            <main class="ads-main">
+                <div class="sort-bar">
+                    <span>{{ (ads$ | async)?.length }} annonces</span>
+
+                    <div class="sort-options">
+                        <span>Trier par :</span>
+                        <select [value]="(filters$ | async)?.sortBy" (change)="onSortChange($event)">
+                            <option value="recent">Plus récent</option>
+                            <option value="price_asc">Prix croissant</option>
+                            <option value="price_desc">Prix décroissant</option>
+                            <option value="relevant">Pertinence</option>
+                        </select>
+                    </div>
+                </div>
+
+                @if (loading$ | async) {
+                <div class="loading-grid">
+                    @for (item of [1,2,3,4,5,6]; track item) {
+                    <div class="skeleton-ad"></div>
+                    }
+                </div>
+                } @else if (error$ | async) {
+                <div class="error-state">
+                    <p>Une erreur est survenue : {{ error$ | async }}</p>
+                    <app-button (click)="retry()" variant="primary">
+                        Réessayer
+                    </app-button>
+                </div>
+                } @else {
+                <div class="ads-grid">
+                    @for (ad of ads$ | async; track ad.id) {
+                    <app-card [ad]="ad" [showViews]="true" />
+                    }
+                </div>
+
+                @if ((ads$ | async)?.length === 0) {
+                <div class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                            stroke="var(--border-light)" stroke-width="2" />
+                        <path d="M12 8V12M12 16H12.01" stroke="var(--border-light)" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                    <h3>Aucune annonce trouvée</h3>
+                    <p>Essayez de modifier vos critères de recherche</p>
+                    <app-button (click)="resetFilters()" variant="primary">
+                        Voir toutes les annonces
+                    </app-button>
+                </div>
+                }
+
+                <!-- Pagination -->
+                @if ((ads$ | async)?.length) {
+                <div class="pagination">
+                    <button class="pagination-btn" [disabled]="currentPage === 1" (click)="prevPage()">
+                        ← Précédent
+                    </button>
+                    <span class="page-info">Page {{ currentPage }}</span>
+                    <button class="pagination-btn" (click)="nextPage()">
+                        Suivant →
+                    </button>
+                </div>
+                }
+                }
+            </main>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="home-page">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Trouvez ce que vous cherchez près de chez vous</h1>
+            <p>La plateforme ultra-niche pour les passionnés</p>
+
+            <!-- Barre de recherche -->
+            <div class="search-bar">
+                <div class="search-input">
+                    <input type="text" placeholder="Que recherchez-vous ?" [(ngModel)]="searchQuery"
+                        (keyup.enter)="onSearch()" />
+                    <button class="search-btn" (click)="onSearch()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="quick-filters">
+                    <button class="filter-btn active">Tout</button>
+                    <button class="filter-btn">Aujourd'hui</button>
+                    <button class="filter-btn">À proximité</button>
+                    <button class="filter-btn">Bons plans</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégories populaires -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Parcourir par catégorie</h2>
+                <a routerLink="/categories" class="see-all">Voir tout</a>
+            </div>
+
+            <div class="categories-grid">
+                @for (category of categories; track category.id) {
+                <!-- <app-category-card [category]="category" /> -->
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Annonces récentes -->
+    <section class="recent-ads">
+        <div class="container">
+            <div class="section-header">
+                <h2>Annonces récentes</h2>
+                <a routerLink="/annonces" class="see-all">Voir tout</a>
+            </div>
+
+            @if (loading$ | async) {
+            <div class="skeleton-grid">
+                @for (item of [1,2,3,4]; track item) {
+                <div class="skeleton-card"></div>
+                }
+            </div>
+            } @else {
+            <div class="ads-grid">
+                @for (ad of recentAds$ | async; track ad.id) {
+                <app-card [ad]="ad" />
+                }
+            </div>
+            }
+
+            <div class="cta-section">
+                <h3>Vous avez quelque chose à vendre ?</h3>
+                <p>Publiez votre annonce gratuitement en quelques minutes</p>
+                <app-button routerLink="/annonces/nouveau" variant="primary" size="lg">
+                    Publier une annonce
+                </app-button>
+            </div>
+        </div>
+    </section>
+</div>
