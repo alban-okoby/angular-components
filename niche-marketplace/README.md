@@ -23,3 +23,9 @@ cd niche-marketplace
 ``` 
 npm i && npm run dev
 ```
+
+When success, you will see this page at  http://localhost:3000
+<img src="./public/screens/home-lg.png" />
+
+Responsive (mobile screen)
+<img src="./public/screens/home-sm.png" />
