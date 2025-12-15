@@ -53,29 +53,38 @@
         font-weight: 500;
         color: var(--text-primary);
     }
-}
-
-.price-inputs {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-
-    input {
-        flex: 1;
-        padding: 8px 12px;
-        border: 1px solid var(--border-light);
-        border-radius: var(--radius-md);
-        font-size: 14px;
-
-        &:focus {
-            outline: none;
-            border-color: var(--primary);
+    
+    .price-inputs {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        
+        input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            
+            &:focus {
+                outline: none;
+                border-color: var(--primary);
+            }
+        }
+        
+        span {
+            color: var(--text-secondary);
+        }
+        @media screen and (max-width: 1024px) {
+            .price-inputs {
+                flex-direction: row;
+                align-items: stretch;
+                border: 1px solid rgb(0, 255, 34);
+            }
+            
         }
     }
 
-    span {
-        color: var(--text-secondary);
-    }
 }
 
 .filter-actions {
@@ -118,6 +127,13 @@
                 outline: none;
                 border-color: var(--primary);
             }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .sort-bar {
+            flex-direction: column;
+            align-items: flex-start;
         }
     }
 }
@@ -213,9 +229,18 @@
     .filters-sidebar {
         position: static;
     }
+    .price-inputs {
+        // border: 2px solid red;
+        display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
 }
 
 @media (max-width: 768px) {
+    .ads-list-page {
+        padding: 0;
+    }
     .ads-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);

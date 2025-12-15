@@ -5,12 +5,12 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil, debounceTime } from 'rxjs';
 import { Ad, FilterOptions, AppState } from '../../core/models';
 import { loadAds, setFilters } from '../../store/actions/ad.actions';
-import { AppButton, AppInput, AppCard } from "../../ui";
+import { AppButton, AppInput, AppCard, AppSelect } from "../../ui";
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ads-list',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, AppButton, AppInput, AppCard],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, AppButton, AppInput, AppCard, AppSelect],
   templateUrl: './ads-list.html',
   styleUrl: './ads-list.scss',
 })

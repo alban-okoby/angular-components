@@ -16,9 +16,9 @@
                     <form [formGroup]="filterForm" class="filter-form">
                         <app-input label="Rechercher" placeholder="Mots-clés..." formControlName="searchQuery" />
 
-                        <!-- <app-select label="Catégorie" formControlName="category" [options]="categoryOptions" /> -->
+                        <app-select label="Catégorie" formControlName="category" [options]="categoryOptions" />
 
-                        <!-- <app-select label="Localisation" formControlName="location" [options]="locationOptions" /> -->
+                        <app-select label="Localisation" formControlName="location" [options]="locationOptions" />
 
                         <div class="price-range">
                             <label>Prix</label>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
 
-                        <!-- <app-select label="État" formControlName="condition" [options]="conditionOptions" multiple /> -->
+                        <app-select label="État" formControlName="condition" [options]="conditionOptions" [multiple]="true" />
 
                         <div class="filter-actions">
                             <app-button type="button" variant="secondary" size="sm" (click)="resetFilters()">
