@@ -31,13 +31,45 @@ Responsive (mobile screen)
 <img src="./public/screens/home-sm.png" />
 
 
-**To continue the development, you can for example** :
+#### To continue the development :
 
 1. **Implement the other pages** (listing details, profile, admin, etc)
 2. **Connect to a real API** (update services)
 3. **Add real-time chat** (WebSocket + service)
-4. **ntegrate Google Maps** (composant map)
+4. **Integrate Google Maps** (composant map)
 5. **Add image upload** (cloud storage service or local storage)
 6. **Implement tests les tests** (unit and E2E)
+
+### A. Authentication / Users
+- Sign up (email + phone number)
+- SMS OTP (mockable)
+- Login / logout
+- User profile
+- Optional identity verification
+
+### B. Listings
+- Create listing (title, description, price, location, unlimited photos)
+- Status (available, sold)
+- Categories and subcategories
+- Advanced search system
+  - Filters (price, location, category)
+- Paid promotion (boost)
+
+### C. Integrated Chat
+- Real-time buyer/seller messaging
+- Notifications
+
+### D. Payments
+- Mobile money integration (Mobile Money) — mock APIs
+- Payment to boost a listing
+- Transaction history
+
+### E. Administration
+#### Admin dashboard
+- Ban users
+- Remove fraudulent listings
+- Manage categories and subcategories
+- Revenue tracking
+
 
 Have a nice coding <\> ! 
